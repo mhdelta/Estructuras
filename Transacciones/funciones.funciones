@@ -1,0 +1,97 @@
+void crear_cuenta(){
+
+	struct cuentas cuenta_a_crear;
+
+	if(&vector_cuentas[i] != NULL){
+
+		int temp = rand() % (999999999 - 100000000) + 100000000;            //numero aleatorio de cuenta
+
+		sprintf(cuenta_a_crear.numero_cuenta, "%d", temp); 				// Estamos trabajando con direcciones que apuntan a donde esta la estructura.
+
+		cuenta_a_crear.estado = '1'; // Estado
+
+		time_t rawtime;
+	   	struct tm *info;
+	   	time( &rawtime );													// FECHA CREADA
+	   	info = localtime( &rawtime );
+	   	strftime(cuenta_a_crear.fecha_creada,80,"%x - %I:%M%p", info);
+
+	   	printf("%s\n", "Digite el numero de su cedula");    					//CEDULA
+	   	fgets(cuenta_a_crear.cedula, 50, stdin);
+	   	strtok(cuenta_a_crear.cedula, "\n");
+
+	   	printf("%s\n", "Digite su nombre");									//NOMBRE
+		fgets(cuenta_a_crear.nombre, 50, stdin);
+		strtok(cuenta_a_crear.nombre, "\n");
+
+	 	printf("%s\n", "Digite su direccion");								//DIRECCION
+		fgets(cuenta_a_crear.direccion, 50, stdin);
+		strtok(cuenta_a_crear.direccion, "\n");
+
+	   	printf("%s\n", "Digite su telefono");									//TELEFONO
+		fgets(cuenta_a_crear.telefono, 50, stdin);
+		strtok(cuenta_a_crear.telefono, "\n");
+
+	   	printf("%s\n", "Digite su e_mail");									//E_MAIL
+		fgets(cuenta_a_crear.e_mail, 50, stdin);
+		strtok(cuenta_a_crear.e_mail, "\n");
+
+		vector_cuentas[i] = cuenta_a_crear;
+
+	}else if(i < 4){
+		i++;
+		crear_cuenta(); 
+	}else{
+		clear();
+		printf("%s\n", "Se ha alcanzado la cantidad maxima de cuentas");
+	} 
+};
+
+
+
+
+
+
+
+	FILE *fp;
+   	fp = fopen("cuentas.txt", "w");
+  	fwrite ((cuenta_a_crear) , sizeof(struct cuentas), sizeof(cuenta_a_crear), fp);
+   	fclose(fp);
+
+//   GUARDAR LOS VECTORES EN LOS ARCHIVOS
+
+   		FILE *fp;
+   	fp = fopen("cuentas.txt", "w");
+  	fwrite ( X, sizeof(struct cuentas[5]), sizeof(X), fp);
+   	fclose(fp);
+
+	FILE *archdisco;
+	archdisco = fopen("cuentas.txt","r");
+	fread(&Y,sizeof(Y),1,archdisco);
+	printf("%s\n", Y[1].cedula);
+	fclose(archdisco);
+
+
+
+	FILE *archdisco;
+	archdisco = fopen("cuentas.txt","r");
+	fread(&Y,sizeof(struct cuentas[5]),1,archdisco);
+	fclose(archdisco);
+	// scanf("%d", &n);
+
+
+				FILE *fp;
+		   	fp = fopen("cuentas.txt", "w");
+		  	fwrite ( Y, sizeof(Y), sizeof(Y), fp);
+
+
+		  	
+			// printf(" Nro de cuenta = %s ", cuenta_a_buscar.numero_cuenta);
+			// printf(" Estado = %s ", cuenta_a_buscar.estado);
+			// printf(" Fecha creada = %s ", cuenta_a_buscar.fecha_creada);
+			// printf(" Fecha cancelada = %s ", cuenta_a_buscar.fecha_cancelada);
+			// printf(" Cedula =%s ",cuenta_a_buscar.cedula);
+			// printf(" nombre =%s ",cuenta_a_buscar.nombre);
+			// printf("Direccion=%s ",cuenta_a_buscar.direccion);
+			// printf("Telefono=%s ",cuenta_a_buscar.telefono);
+			// printf("e_mail= %s",cuenta_a_buscar.e_mail);
