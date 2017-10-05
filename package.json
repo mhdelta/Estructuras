@@ -1,0 +1,21 @@
+{
+  "name": "estructuras_de_datos",
+  "version": "1.0.0",
+  "description": "Colas, listas, pilas, árboles y complejidad computacional..Universidad Tecnológica de Pereira.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhdelta/Estructuras.git"
+  },
+  "keywords": [
+    "Data",
+    "Structures"
+  ],
+  "author": "Miguel Ángel Henao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhdelta/Estructuras/issues"
+  },
+  "homepage": "https://github.com/mhdelta/Estructuras#readme"
+}
+
