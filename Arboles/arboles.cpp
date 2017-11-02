@@ -82,6 +82,49 @@ void verArbol(ABB arbol, int n)
      verArbol(arbol->izq, n+1);
 }
 //-------------------------------------------------------------------
+ABB EnlazarArbol(ABB izq, ABB der)
+{
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    ABB centro = EnlazarArbol(izq->der, der->izq);
+    izq->der = centro;
+    der->izq = izq;
+    return der;
+}
+
+void elimina(ABB &arbol, int x)
+{
+
+     if(arbol==NULL) return;
+
+     if(x<arbol->nro)
+         elimina(arbol->izq, x);
+     else if(x>arbol->nro)
+         elimina(arbol->der, x);
+
+     else
+     {
+         ABB p = arbol;
+         arbol = EnlazarArbol(arbol->izq, arbol->der);
+         delete p;
+     }
+}
+void eliminar(ABB &arbol){
+	printf("%s\n", "[1] Eliminar\t[2]. Salir");
+	int op;
+	scanf("%d", &op); getchar();
+
+	while(op != 2 and arbol != NULL){
+		printf("%s\n", "Valor a eliminar");
+		int x;
+		scanf("%d", &x); getchar();
+		elimina(arbol, x);
+		printf("%s\n", "-----------------");
+		verArbol(arbol, 0);
+	}
+
+}
 int main()
 {
     ABB arbol = NULL;   // creado Arbol
@@ -105,13 +148,16 @@ int main()
     cout << "\n Mostrando ABB \n\n";
     verArbol( arbol, 0);
 
-    cout << "\n Recorridos del ABB";
+    // cout << "\n Recorridos del ABB";
 
-    cout << "\n\n En orden   :  ";   enOrden(arbol);
-    cout << "\n\n Pre Orden  :  ";   preOrden(arbol);
-    cout << "\n\n Post Orden :  ";   postOrden(arbol);
+    // cout << "\n\n En orden   :  ";   enOrden(arbol);
+    // cout << "\n\n Pre Orden  :  ";   preOrden(arbol);
+    // cout << "\n\n Post Orden :  ";   postOrden(arbol);
 
     cout << endl << endl;
+
+
+	eliminar(arbol);
 
     system("pause");
     return 0;
