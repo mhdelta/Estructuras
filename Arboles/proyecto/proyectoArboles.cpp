@@ -1,5 +1,6 @@
 #include "ABB.h"
 #include "AVL.h"
+#include "ARN.h"
 
 
 void menu2()
@@ -18,8 +19,6 @@ int FuncionesAVL()
 	AVL arbol=NULL;
 	
 	cout<<"\n\t\t...[Arbol AVL]...\n\n";
-	
-
 	
 	do{
 		menu2();
@@ -54,17 +53,15 @@ int FuncionesAVL()
 //________________________________________________________________________________________________________________________________
 //ARBOL ROJO-NEGRO
 
-/*
+
 int FuncionesARN()
 {
 	int op=0, dato;
 	
-	ptr arbol=NULL;
+	RBT arbol=NULL;
 	
 	cout<<"\n\t\t...[Arbol Rojo-Negro]...\n\n";
-	
-	insertarcompletoARN(&arbol);
-	
+		
 	do{
 		menu2();
 		cout<<"ingrese una opcion: ";
@@ -74,19 +71,19 @@ int FuncionesARN()
 		{
 			case 1: cout<<"ingrese el dato que quiere insertar: ";
 					cin>>dato;
-					InsertarARN(&arbol, dato);
+					insertarARN(arbol, dato);
 					cout<<"\nEl dato fue insertado correctamente"<<endl;
 					break;
 			case 2: cout<<"ingrese el dato que quiere eliminar: ";
 					cin>>dato;
-					EliminarARN(&arbol, dato);
+					eliminar_rbt(arbol, dato);
 					cout<<"\nEl dato fue eliminado correctamente"<<endl;
 					break;
 			case 3: cout<<"ingrese el dato que quiere buscar: ";
 					cin>>dato;
-					BuscarARN (arbol, dato);
+					buscarARN (arbol, dato);
 					break;
-			case 4: VerArbolARN(arbol, 0);
+			case 4: verArbolARN(arbol, 0);
 					break;
 		}
 		system("PAUSE");
@@ -94,7 +91,7 @@ int FuncionesARN()
 	}while (op!=5);
 	
 	return 0;
-}*/
+}
 //_________________________________________________________________________________________________________________________
 
 
@@ -124,10 +121,7 @@ int main ()
 					break;
 			case 2: FuncionesAVL ();
 					break;
-			case 3: //ARN arbol3=NULL;
-					cout<<"\n\t\t...[Arbol Rojo-Negro]...\n\n";
-					//insertarCompletoARN (arbol3);
-					//FuncionesARN ();//
+			case 3: FuncionesARN ();//
 					break;
 		}
 		system("clear");
